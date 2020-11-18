@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     }
     public void GoAddMovement()
     {
-        SceneManager.LoadScene("Add Movement");
+        SceneManager.LoadScene("Add Movement 1");
     }
     public void GoSelectMovement()
     {
