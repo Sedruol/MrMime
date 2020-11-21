@@ -34,13 +34,20 @@ namespace RockVR.Video
                 DirectoryInfo direction = new DirectoryInfo(PathConfig.SaveFolder);
                 FileInfo[] files = direction.GetFiles("*", SearchOption.AllDirectories);
                 videoFiles.Clear();
-                for (int i = 0; i < files.Length; i++)
+                ///////////////////////////
+                //-------original-------//
+                /////////////////////////
+                /*for (int i = 0; i < files.Length; i++)
                 {
                     if (files[i].Name.EndsWith(".mp4"))
                     {
                         videoFiles.Add(PathConfig.SaveFolder + files[i].Name);
                         continue;
                     }
+                }*/
+                if (files[files.Length - 1].Name.EndsWith(".mp4"))
+                {
+                    videoFiles.Add(PathConfig.SaveFolder + files[files.Length - 1].Name);
                 }
             }
             // Init VideoPlayer properties.

@@ -211,6 +211,13 @@ namespace RockVR.Video
                 status = StatusType.STARTED;
             }
         }
+        /// <sumary>
+        /// Re initialize the attributes of the capture session and start capture. 
+        /// </sumary>
+        public override void ChangeStatus()
+        {
+            status = StatusType.NOT_START;
+        }
         /// <summary>
         /// Handle callbacks for the <c>VideoCapture</c> complete.
         /// </summary>

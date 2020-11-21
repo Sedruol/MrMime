@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;//koala lo añadió
 using System.Diagnostics;
 
 namespace RockVR.Video.Demo
@@ -56,7 +57,7 @@ namespace RockVR.Video.Demo
                 {
                     if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "View Video"))
                     {
-#if UNITY_5_6_OR_NEWER
+//#if UNITY_5_6_OR_NEWER
                         // Set root folder.
                         isPlayVideo = true;
                         VideoPlayer.instance.SetRootFolder();
@@ -66,16 +67,32 @@ namespace RockVR.Video.Demo
                 }
                 else
                 {
-                    if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Next Video"))
-                    {
+                    ///////////////////////////
+                    //-------original-------//
+                    /////////////////////////
+                    //if(GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Next Video"))
+                    //{
                         // Turn to next video.
-                        VideoPlayer.instance.NextVideo();
+                    //    VideoPlayer.instance.NextVideo();
                         // Play capture video.
-                        VideoPlayer.instance.PlayVideo();
-#else
+                    //    VideoPlayer.instance.PlayVideo();
+//#else
                         // Open video save directory.
-                        Process.Start(PathConfig.saveFolder);
-#endif
+//                        Process.Start(PathConfig.saveFolder);
+//#endif
+                    //}
+                    //agregado por koala
+                    if (GUI.Button(new Rect(/*465*/Screen.width - 175, Screen.height - 120, 150, 50), "Back"))
+                    {
+                        VideoCaptureCtrl.instance.ChangeStatus();
+                        gameObject.SetActive(false);
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
+                    if (GUI.Button(new Rect(/*465*/Screen.width - 175, Screen.height - 60, 150, 50), "Add Video"))
+                    {
+                        VideoCaptureCtrl.instance.ChangeStatus();
+                        gameObject.SetActive(false);
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     }
                 }
             }

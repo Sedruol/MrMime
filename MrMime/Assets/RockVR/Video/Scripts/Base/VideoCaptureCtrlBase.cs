@@ -120,6 +120,8 @@ namespace RockVR.Video
         /// </summary>
         public virtual void ToggleCapture() { }
 
+        public virtual void ChangeStatus() { }
+
         private void Start()
         {
             if (startOnAwake && status == StatusType.NOT_START)
