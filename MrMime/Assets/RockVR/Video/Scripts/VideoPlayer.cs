@@ -17,6 +17,7 @@ namespace RockVR.Video
         private UnityEngine.Video.VideoPlayer videoPlayerImpl;
         private int index = 0;
         public static VideoPlayer instance;
+        public string VideoName;//koala añadió
         private void Awake()
         {
             if (instance == null)
@@ -49,6 +50,7 @@ namespace RockVR.Video
                 {
                     videoFiles.Add(PathConfig.SaveFolder + files[files.Length - 1].Name);
                 }
+                VideoName = files[files.Length - 1].Name;//koala añadió
             }
             // Init VideoPlayer properties.
             videoPlayerImpl = gameObject.GetComponent<UnityEngine.Video.VideoPlayer>();

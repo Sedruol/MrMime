@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Security.Cryptography;
-using System.Text;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
@@ -21,6 +18,7 @@ public class RecordVideo : MonoBehaviour
     [SerializeField] private RawImage camaraVideo;
     [SerializeField] private GameObject panelVideo;
     [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private S3Conection s3Conection;
     static WebCamTexture backCam;
     private bool camara;
     private string path;
@@ -31,10 +29,6 @@ public class RecordVideo : MonoBehaviour
     private VideoPlayer video;
     private string search;
     public SmartFileExplorer fileExplorer = new SmartFileExplorer();
-    private const string awsBucketName = "tesis-resources"; //pedirle al diogoz
-    private const string awsAccessKey = "AKIAVKND3FIWXOADB5GX"; //pedirle al diogoz
-    private const string awsSecretKey = "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"; //pedirle al diogoz
-    private string awsURLBaseVirtual = "";
     void Start()
     {
         btnGoHome.onClick.AddListener(() => GoHome());
@@ -49,7 +43,6 @@ public class RecordVideo : MonoBehaviour
         reproduce = false;
         videoPlayer.gameObject.SetActive(false);
         video = videoPlayer.GetComponent<VideoPlayer>(); 
-        awsURLBaseVirtual = "https://" + awsBucketName + ".s3.amazonaws.com/";
     }
     private void GoHome()
     {
@@ -60,36 +53,6 @@ public class RecordVideo : MonoBehaviour
     {
         StopVideo();
         Application.Quit();
-    }
-    public void UploadFileToAWS3(string FileName, string FilePath) {
-        string currentAWS3Date = System.DateTime.UtcNow.ToString("ddd, dd MMM yyyy HH:mm:ss ") + "GMT";
-        string canonicalString = "PUT\n\n\n\nx-amz-date:" + currentAWS3Date + "\n/" + awsBucketName + "/" + FileName;
-        
-        UTF8Encoding encode = new UTF8Encoding();
-        HMACSHA1 signature = new HMACSHA1();
-        signature.Key = encode.GetBytes(awsSecretKey);
-        byte[] bytes = encode.GetBytes(canonicalString);
-        byte[] moreBytes = signature.ComputeHash(bytes);
-        string encodedCanonical = Convert.ToBase64String(moreBytes);
-
-        string aws3Header = "AWS " + awsAccessKey + ":" + encodedCanonical;
-
-        string URL3 = awsURLBaseVirtual + FileName;
-
-        WebRequest requestS3 = (HttpWebRequest)WebRequest.Create(URL3); 
-        requestS3.Headers.Add("Authorization", aws3Header);
-        requestS3.Headers.Add("x-amz-date", currentAWS3Date);
-
-        byte[] fileRawBytes = File.ReadAllBytes(FilePath);
-        requestS3.ContentLength = fileRawBytes.Length;
-
-        requestS3.Method = "PUT";
-
-        Stream S3Stream = requestS3.GetRequestStream();
-        S3Stream.Write(fileRawBytes, 0, fileRawBytes.Length);
-        Debug.Log("Sent bytes: " + requestS3.ContentLength + ", for file: " + FileName);
-
-        S3Stream.Close();
     }
 
     public void OpenCamera()
@@ -120,6 +83,7 @@ public class RecordVideo : MonoBehaviour
     {
 #if UNITY_EDITOR
         path = EditorUtility.OpenFilePanel("Overwrite with mp4", "", "mp4");
+        path = path.Replace(@"\", "/");
         //GetVideoName();
 #else
         ShowExplorer();
@@ -145,9 +109,8 @@ public class RecordVideo : MonoBehaviour
     {
         string[] fileNames = path.Split('/');
         string nameFile = fileNames[fileNames.Length - 1];
-        nameFile = nameFile.Split('.')[0];
         Debug.Log(nameFile);
-        UploadFileToAWS3(nameFile, path);
+        s3Conection.Post(path, nameFile);
         videoPlayer.gameObject.SetActive(false);
         panelVideo.SetActive(false);
     }

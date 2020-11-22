@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;//koala lo añadió
 using System.Diagnostics;
+using System;//koala añadió
 
 namespace RockVR.Video.Demo
 {
     public class VideoCaptureUI : MonoBehaviour
     {
         private bool isPlayVideo = false;
+        [SerializeField] private S3Conection s3Conection;//koala añadió
+        private string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//koala añadió
         private void Awake()
         {
             Application.runInBackground = true;
             isPlayVideo = false;
+            //koala añadió
+            myDocumentsPath += "/RockVR/Video/";
+            myDocumentsPath=myDocumentsPath.Replace(@"\", "/");
         }
 
         private void OnGUI()
@@ -91,6 +97,9 @@ namespace RockVR.Video.Demo
                     if (GUI.Button(new Rect(/*465*/Screen.width - 175, Screen.height - 60, 150, 50), "Add Video"))
                     {
                         VideoCaptureCtrl.instance.ChangeStatus();
+                        myDocumentsPath += VideoPlayer.instance.VideoName;
+                        print(myDocumentsPath);
+                        s3Conection.Post(myDocumentsPath, VideoPlayer.instance.VideoName);
                         gameObject.SetActive(false);
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     }
