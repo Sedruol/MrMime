@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;//koala lo añadió
 using System.Diagnostics;
 using System;//koala añadió
+using UnityEngine.UI;//koala añadió
 
 namespace RockVR.Video.Demo
 {
@@ -9,6 +10,9 @@ namespace RockVR.Video.Demo
     {
         private bool isPlayVideo = false;
         [SerializeField] private S3Conection s3Conection;//koala añadió
+        [SerializeField] private GameObject PanelFondo;//koala añadió
+        [SerializeField] private Text txtInfo;//koala añadió
+        [SerializeField] private Button btnOk;//koala añadió
         private string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//koala añadió
         private void Awake()
         {
@@ -18,7 +22,6 @@ namespace RockVR.Video.Demo
             myDocumentsPath += "/RockVR/Video/";
             myDocumentsPath=myDocumentsPath.Replace(@"\", "/");
         }
-
         private void OnGUI()
         {
             if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.NOT_START)
@@ -96,12 +99,15 @@ namespace RockVR.Video.Demo
                     }
                     if (GUI.Button(new Rect(/*465*/Screen.width - 175, Screen.height - 60, 150, 50), "Add Video"))
                     {
-                        VideoCaptureCtrl.instance.ChangeStatus();
+                        PanelFondo.gameObject.SetActive(true);
+                        txtInfo.text = "Se está enviando el video al servidor";
                         myDocumentsPath += VideoPlayer.instance.VideoName;
                         print(myDocumentsPath);
                         s3Conection.Post(myDocumentsPath, VideoPlayer.instance.VideoName);
+                        txtInfo.text = "Se envió el video al servidor";
+                        btnOk.gameObject.SetActive(true);
+                        VideoCaptureCtrl.instance.ChangeStatus();
                         gameObject.SetActive(false);
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     }
                 }
             }

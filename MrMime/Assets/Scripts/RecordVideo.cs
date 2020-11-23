@@ -19,6 +19,9 @@ public class RecordVideo : MonoBehaviour
     [SerializeField] private GameObject panelVideo;
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private S3Conection s3Conection;
+    [SerializeField] private GameObject PanelFondo;
+    [SerializeField] private Text txtInfo;
+    [SerializeField] private Button btnOk;
     static WebCamTexture backCam;
     private bool camara;
     private string path;
@@ -33,6 +36,9 @@ public class RecordVideo : MonoBehaviour
     {
         btnGoHome.onClick.AddListener(() => GoHome());
         btnExit.onClick.AddListener(() => Exit());
+        btnOk.gameObject.SetActive(false);
+        PanelFondo.SetActive(false);
+        txtInfo.text = "";
         panelVideo.SetActive(false);
         camaraVideo.gameObject.SetActive(false);
         VideoCaptureCtlr.SetActive(false);
@@ -42,7 +48,12 @@ public class RecordVideo : MonoBehaviour
         targetPath = targetPath.Replace(@"\", "/");
         reproduce = false;
         videoPlayer.gameObject.SetActive(false);
-        video = videoPlayer.GetComponent<VideoPlayer>(); 
+        video = videoPlayer.GetComponent<VideoPlayer>();
+        btnOk.onClick.AddListener(() => ClosePanel());
+    }
+    private void ClosePanel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     private void GoHome()
     {
@@ -77,19 +88,28 @@ public class RecordVideo : MonoBehaviour
         fileExplorer.OpenExplorer(initialDir, restoreDir, title, defExt, filter);
         path = fileExplorer.fileName;
         path = path.Replace(@"\", "/");
+        reproduce = true;
+        Debug.Log(path);
     }
 
     public void OpenExplorer()
     {
+        if (videoPlayer.isPlaying)
+            videoPlayer.Pause();
 #if UNITY_EDITOR
         path = EditorUtility.OpenFilePanel("Overwrite with mp4", "", "mp4");
-        path = path.Replace(@"\", "/");
+        if (path != "")
+        {
+            path = path.Replace(@"\", "/");
+            reproduce = true;
+            Debug.Log(path);
+        }
         //GetVideoName();
 #else
         ShowExplorer();
 #endif
-        reproduce = true;
-        Debug.Log(path);
+        if (videoPlayer.isPaused)
+            videoPlayer.Play();
     }
     /*public void GetVideoName()
     {
@@ -107,12 +127,16 @@ public class RecordVideo : MonoBehaviour
     }*/
     public void AddVideo()
     {
+        videoPlayer.gameObject.SetActive(false);
+        panelVideo.SetActive(false);
+        PanelFondo.gameObject.SetActive(true);
+        txtInfo.text = "Se está enviando el video al servidor";
         string[] fileNames = path.Split('/');
         string nameFile = fileNames[fileNames.Length - 1];
         Debug.Log(nameFile);
         s3Conection.Post(path, nameFile);
-        videoPlayer.gameObject.SetActive(false);
-        panelVideo.SetActive(false);
+        txtInfo.text = "Se envió el video al servidor";
+        btnOk.gameObject.SetActive(true);
     }
     public void StopVideo()
     {
