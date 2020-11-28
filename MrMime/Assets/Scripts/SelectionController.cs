@@ -24,7 +24,7 @@ public class SelectionController : MonoBehaviour
     private float[] xs = new float[100];
     private float[] ys = new float[100];
     private float[] zs = new float[100];
-    private bool muevetectmr;
+    private bool muevete;
     private int cantMoves;
     private int temp;
     private string path;
@@ -38,32 +38,35 @@ public class SelectionController : MonoBehaviour
         cont = 0;
         cantMoves = 0;
         temp = 0;
-        muevetectmr = false;
-        Globals.movements.Add(new MovementData()
+        muevete = false;
+        if (Globals.movements.Count == 0)
         {
-            movementName = "caminar",
-            movementPicture = Resources.Load<Sprite>("Sprites/caminar")
-        });
-        Globals.movements.Add(new MovementData()
-        {
-            movementName = "correr",
-            movementPicture = Resources.Load<Sprite>("Sprites/correr")
-        });
-        Globals.movements.Add(new MovementData()
-        {
-            movementName = "estirar",
-            movementPicture = Resources.Load<Sprite>("Sprites/estirar")
-        });
-        Globals.movements.Add(new MovementData()
-        {
-            movementName = "marcha",
-            movementPicture = Resources.Load<Sprite>("Sprites/marcha")
-        });
-        Globals.movements.Add(new MovementData()
-        {
-            movementName = "saludar",
-            movementPicture = Resources.Load<Sprite>("Sprites/saludar")
-        });
+            Globals.movements.Add(new MovementData()
+            {
+                movementName = "caminar",
+                movementPicture = Resources.Load<Sprite>("Sprites/caminar")
+            });
+            Globals.movements.Add(new MovementData()
+            {
+                movementName = "correr",
+                movementPicture = Resources.Load<Sprite>("Sprites/correr")
+            });
+            Globals.movements.Add(new MovementData()
+            {
+                movementName = "estirar",
+                movementPicture = Resources.Load<Sprite>("Sprites/estirar")
+            });
+            Globals.movements.Add(new MovementData()
+            {
+                movementName = "marcha",
+                movementPicture = Resources.Load<Sprite>("Sprites/marcha")
+            });
+            Globals.movements.Add(new MovementData()
+            {
+                movementName = "saludar",
+                movementPicture = Resources.Load<Sprite>("Sprites/saludar")
+            });
+        }
         movement1 = false;
         movement2 = false;
         movement3 = false;
@@ -78,11 +81,11 @@ public class SelectionController : MonoBehaviour
         btnMovement1.onClick.AddListener(() => ExecuteMovement1());
         btnMovement2.onClick.AddListener(() => ExecuteMovement2());
         btnMovement3.onClick.AddListener(() => ExecuteMovement3());
-        for(int i = 0; i < 17; i++)
+        /*for(int i = 0; i < 17; i++)
         {
             GameObject g = Instantiate(circle, new Vector3(-50, -10, -20), Quaternion.identity, 
                 esqueleto.transform);
-        }
+        }*/
     }
     public void ExecuteMovement1() {
         if (!movement1)
@@ -151,7 +154,7 @@ public class SelectionController : MonoBehaviour
             }
             temp = lines.Length / cantMoves;
             Debug.Log(cantMoves);
-            muevetectmr = true;
+            muevete = true;
             /*for (int i = 0; i < cantMoves; i++)
             {
                 for (int j = 0; j < temp; j++)
@@ -184,7 +187,7 @@ public class SelectionController : MonoBehaviour
             }
             temp = lines.Length / cantMoves;
             Debug.Log(cantMoves);
-            muevetectmr = true;
+            muevete = true;
         }
         else if (movement3)
         {
@@ -202,7 +205,7 @@ public class SelectionController : MonoBehaviour
             }
             temp = lines.Length / cantMoves;
             Debug.Log(cantMoves);
-            muevetectmr = true;
+            muevete = true;
         }
     }
     public void graphic(int cantPoints)
@@ -211,20 +214,21 @@ public class SelectionController : MonoBehaviour
         {
             esqueleto.transform.GetChild(j).transform.position = new Vector3(xs[j] / 100, ys[j] / 100, (zs[j] / 100) + 10);
         }
-        muevetectmr = true;
+        muevete = true;
     }
     private void FixedUpdate()
     {
-        if (muevetectmr)
+        //---usar-verano---
+        /*if (muevete)
         {
             if (contMove == cantMoves)
             {
-                muevetectmr = false;
+                muevete = false;
                 contMove = 0;
             }
             else
             {
-                muevetectmr = false;
+                muevete = false;
                 for (int j = 0; j < temp; j++)
                 {
                     if (lines[j] != ".")
@@ -237,8 +241,10 @@ public class SelectionController : MonoBehaviour
                 contMove++;
                 graphic(temp - 1);
             }
-        }
-        /*if (muevetectmr && cantMoves > 0)
+        }*/
+        //---fin---
+        //no usar lo de abajo
+        /*if (muevete && cantMoves > 0)
         {
             for (int j = 0; j < temp - 1; j++)
             {
@@ -249,7 +255,7 @@ public class SelectionController : MonoBehaviour
             cantMoves--;
         }
         else
-            muevetectmr = false;*/
+            muevete = false;*/
     }
 
     public void MoveMovementsRight()
@@ -260,7 +266,8 @@ public class SelectionController : MonoBehaviour
             SetCont(cont + 1);
         }
     }
-    private void OnGUI()
+    //usar en verano
+    /*private void OnGUI()
     {
         if (CanvasMovements.activeSelf)
         {
@@ -276,7 +283,7 @@ public class SelectionController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {

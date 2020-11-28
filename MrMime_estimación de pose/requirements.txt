@@ -1,0 +1,12 @@
+argparse
+dill
+fire
+matplotlib
+numba
+psutil
+pycocotools
+requests
+scikit-image
+slidingwindow
+tqdm
+git+https://github.com/ppwwyyxx/tensorpack.git

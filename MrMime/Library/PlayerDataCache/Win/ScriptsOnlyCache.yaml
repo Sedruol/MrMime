@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - RockVR.Video.VideoCapture
     - RockVR.Video.VideoCaptureCtrl
     - RockVR.Video.VideoPlayer
+    - S3Conection
     - SelectionController
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -54,37 +55,37 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11174}
+      Script: {instanceID: 11194}
     - Class: 114
-      Script: {instanceID: 11186}
+      Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11374}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 11384}
+      Script: {instanceID: 11412}
     - Class: 114
-      Script: {instanceID: 11390}
+      Script: {instanceID: 11806}
     - Class: 114
-      Script: {instanceID: 11780}
+      Script: {instanceID: 11926}
     - Class: 114
-      Script: {instanceID: 11900}
+      Script: {instanceID: 12196}
     - Class: 114
-      Script: {instanceID: 12164}
+      Script: {instanceID: 12204}
     - Class: 114
-      Script: {instanceID: 12172}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12188}
+      Script: {instanceID: 12246}
     - Class: 114
-      Script: {instanceID: 12214}
+      Script: {instanceID: 12256}
     - Class: 114
-      Script: {instanceID: 12224}
+      Script: {instanceID: 12690}
     - Class: 114
-      Script: {instanceID: 12646}
+      Script: {instanceID: 12700}
     - Class: 114
-      Script: {instanceID: 12656}
+      Script: {instanceID: 12874}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 13060}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -131,37 +132,37 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11174}
+      Script: {instanceID: 11194}
     - Class: 114
-      Script: {instanceID: 11186}
+      Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11384}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 11780}
+      Script: {instanceID: 11806}
     - Class: 114
-      Script: {instanceID: 11900}
+      Script: {instanceID: 11926}
     - Class: 114
-      Script: {instanceID: 12164}
+      Script: {instanceID: 12196}
     - Class: 114
-      Script: {instanceID: 12172}
+      Script: {instanceID: 12204}
     - Class: 114
-      Script: {instanceID: 12214}
+      Script: {instanceID: 12246}
     - Class: 114
-      Script: {instanceID: 12646}
+      Script: {instanceID: 12690}
     - Class: 114
-      Script: {instanceID: 12656}
+      Script: {instanceID: 12700}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 13060}
     - Class: 114
-      Script: {instanceID: 14188}
+      Script: {instanceID: 15654}
     - Class: 114
-      Script: {instanceID: 14264}
+      Script: {instanceID: 15730}
     - Class: 114
-      Script: {instanceID: 14268}
+      Script: {instanceID: 15734}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -204,25 +205,25 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11174}
+      Script: {instanceID: 11194}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11374}
+      Script: {instanceID: 11396}
     - Class: 114
-      Script: {instanceID: 11384}
+      Script: {instanceID: 11406}
     - Class: 114
-      Script: {instanceID: 11402}
+      Script: {instanceID: 11424}
     - Class: 114
-      Script: {instanceID: 11780}
+      Script: {instanceID: 11806}
     - Class: 114
-      Script: {instanceID: 12164}
+      Script: {instanceID: 12196}
     - Class: 114
-      Script: {instanceID: 12656}
+      Script: {instanceID: 12700}
     - Class: 114
-      Script: {instanceID: 12662}
+      Script: {instanceID: 12706}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 13060}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -230,6 +231,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -332,7 +335,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: 8b4af2b4dff9af14d95d0cc04a7fb438
+      Hash: 43c51412c6c33af6a11264516c129a7c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RecordVideo
@@ -434,6 +437,12 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Explorer
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -506,6 +515,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 0d82126f99e66ced52298b4134bd761e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AWSSDK.Examples
+    className: CognitoSyncManagerSample
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -524,13 +539,19 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: 4209641778ce109b31d4c5ddeed27313
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: AWSSDK.Examples
+    className: S3Example
+  - hash:
+      serializedVersion: 2
       Hash: 5f1752ed2092162f016c19510c28a8b9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d93db839a2f0b26a8ce0b977b6f1dbe5
     assemblyName: Assembly-CSharp.dll
     namespaceName: RockVR.Video
     className: VideoPlayer
@@ -626,13 +647,25 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: AWSSDK.Core.dll
+    namespaceName: Amazon
+    className: UnityInitializer
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: AWSSDK.Core.dll
+    namespaceName: Amazon.Runtime.Internal
+    className: UnityMainThreadDispatcher
+  - hash:
+      serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 05e42439bc998bc268c0667545023916
     assemblyName: Assembly-CSharp.dll
     namespaceName: RockVR.Video.Demo
     className: VideoCaptureUI
@@ -644,7 +677,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 3711357d3483b57934d57fcaa2afd720
+      Hash: b9951b55261d02b833df8d399bb7d6c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SelectionController
@@ -666,6 +699,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: S3Conection
   - hash:
       serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
@@ -762,12 +801,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Explorer
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main Menu.unity
