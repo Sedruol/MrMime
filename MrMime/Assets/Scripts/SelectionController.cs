@@ -81,11 +81,11 @@ public class SelectionController : MonoBehaviour
         btnMovement1.onClick.AddListener(() => ExecuteMovement1());
         btnMovement2.onClick.AddListener(() => ExecuteMovement2());
         btnMovement3.onClick.AddListener(() => ExecuteMovement3());
-        /*for(int i = 0; i < 17; i++)
+        for(int i = 0; i < 17; i++)
         {
             GameObject g = Instantiate(circle, new Vector3(-50, -10, -20), Quaternion.identity, 
                 esqueleto.transform);
-        }*/
+        }
     }
     public void ExecuteMovement1() {
         if (!movement1)
@@ -212,14 +212,14 @@ public class SelectionController : MonoBehaviour
     {
         for (int j = 0; j < cantPoints; j++)
         {
-            esqueleto.transform.GetChild(j).transform.position = new Vector3(xs[j] / 100, ys[j] / 100, (zs[j] / 100) + 10);
+            esqueleto.transform.GetChild(j).transform.position = new Vector3(xs[j] / 100, ys[j] / 100, (zs[j] / 100) + 25);
         }
         muevete = true;
     }
     private void FixedUpdate()
     {
         //---usar-verano---
-        /*if (muevete)
+        if (muevete)
         {
             if (contMove == cantMoves)
             {
@@ -234,14 +234,20 @@ public class SelectionController : MonoBehaviour
                     if (lines[j] != ".")
                     {
                         xs[j] = float.Parse(lines[temp * contMove + j].Split(' ')[0]);
+                        ys[j] = float.Parse(lines[temp * contMove + j].Split(' ')[2]);
+                        zs[j] = float.Parse(lines[temp * contMove + j].Split(' ')[1]);
+                        //--------------------------------------------
+                        //original, los cambios realizados en las 3 lineas de arriba son para acomodar
+                        //-------------------------------------------
+                        /*xs[j] = float.Parse(lines[temp * contMove + j].Split(' ')[0]);
                         ys[j] = float.Parse(lines[temp * contMove + j].Split(' ')[1]);
-                        zs[j] = float.Parse(lines[temp * contMove + j].Split(' ')[2]);
+                        zs[j] = float.Parse(lines[temp * contMove + j].Split(' ')[2]);*/
                     }
                 }
                 contMove++;
                 graphic(temp - 1);
             }
-        }*/
+        }
         //---fin---
         //no usar lo de abajo
         /*if (muevete && cantMoves > 0)
@@ -267,7 +273,7 @@ public class SelectionController : MonoBehaviour
         }
     }
     //usar en verano
-    /*private void OnGUI()
+    private void OnGUI()
     {
         if (CanvasMovements.activeSelf)
         {
@@ -283,7 +289,7 @@ public class SelectionController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
-    }*/
+    }
     // Update is called once per frame
     void Update()
     {
