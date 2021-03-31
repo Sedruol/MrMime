@@ -88,37 +88,55 @@ public class SelectionController : MonoBehaviour
         }
     }
     public void ExecuteMovement1() {
+        if(btnMovement1.gameObject.GetComponent<Image>().color == Color.red)
+        {
+            btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+        }
         if (!movement1)
         {
             movement1 = true;
             movement2 = false;
             movement3 = false;
+            btnMovement1.gameObject.GetComponent<Image>().color = Color.red;
         }
         else
             movement1 = false;
+            //btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
         Debug.Log(movement1);
     }
     public void ExecuteMovement2()
     {
+        if (btnMovement2.gameObject.GetComponent<Image>().color == Color.red)
+        {
+            btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+        }
         if (!movement2)
         {
             movement1 = false;
             movement2 = true;
             movement3 = false;
+            btnMovement2.gameObject.GetComponent<Image>().color = Color.red;
         }
         else
             movement2 = false;
+            //btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
     }
     public void ExecuteMovement3()
     {
+        if (btnMovement3.gameObject.GetComponent<Image>().color == Color.red)
+        {
+            btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
+        }
         if (!movement3)
         {
             movement1 = false;
             movement2 = false;
             movement3 = true;
+            btnMovement3.gameObject.GetComponent<Image>().color = Color.red;
         }
         else
             movement3 = false;
+            //btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
     }
     public bool GetChange() { return change; }
     public int getCont() { return cont; }
@@ -138,7 +156,7 @@ public class SelectionController : MonoBehaviour
         if (movement1)
         {
             CanvasMovements.SetActive(false);
-            path = "C:/Users/m/Downloads/output.txt";
+            path = "./Assets/Movements/output.txt";
 
             //StreamReader reader = new StreamReader(path);
             //Debug.Log(reader.ReadToEnd()+"10");
@@ -174,7 +192,7 @@ public class SelectionController : MonoBehaviour
         else if (movement2)
         {
             CanvasMovements.SetActive(false);
-            path = "C:/Users/m/Downloads/output.txt";
+            path = "./Assets/Movements/output.txt";
 
             lines = File.ReadAllLines(path);
             cantMoves = 0;
@@ -192,7 +210,7 @@ public class SelectionController : MonoBehaviour
         else if (movement3)
         {
             CanvasMovements.SetActive(false);
-            path = "C:/Users/m/Downloads/output.txt";
+            path = "./Assets/Movements/output.txt";
 
             lines = File.ReadAllLines(path);
             cantMoves = 0;
