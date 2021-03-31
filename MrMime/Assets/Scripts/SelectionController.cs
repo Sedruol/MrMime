@@ -78,16 +78,86 @@ public class SelectionController : MonoBehaviour
         //Globals.movements.Add();
         btnLeftArrow.onClick.AddListener(() => MoveMovementsLeft());
         btnRightArrow.onClick.AddListener(() => MoveMovementsRight());
-        btnMovement1.onClick.AddListener(() => ExecuteMovement1());
+        btnMovement1.onClick.AddListener(() => ExecuteMovement(true, false, false));
+        btnMovement2.onClick.AddListener(() => ExecuteMovement(false, true, false));
+        btnMovement3.onClick.AddListener(() => ExecuteMovement(false, false, true));
+        /*btnMovement1.onClick.AddListener(() => ExecuteMovement1());
         btnMovement2.onClick.AddListener(() => ExecuteMovement2());
-        btnMovement3.onClick.AddListener(() => ExecuteMovement3());
-        for(int i = 0; i < 17; i++)
+        btnMovement3.onClick.AddListener(() => ExecuteMovement3());*/
+        for (int i = 0; i < 17; i++)
         {
             GameObject g = Instantiate(circle, new Vector3(-50, -10, -20), Quaternion.identity, 
                 esqueleto.transform);
         }
     }
-    public void ExecuteMovement1() {
+    public void ExecuteMovement(bool mov1, bool mov2, bool mov3)
+    {
+        if (mov1)
+        {
+            /*if (btnMovement1.gameObject.GetComponent<Image>().color == Color.red)
+            {
+                btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+            }*/
+            if (!movement1)
+            {
+                movement1 = true;
+                movement2 = false;
+                movement3 = false;
+                btnMovement1.gameObject.GetComponent<Image>().color = Color.red;
+                btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+                btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                movement1 = false;
+                btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+            }
+            Debug.Log(movement1);
+        }
+        else if (mov2)
+        {
+            /*if (btnMovement2.gameObject.GetComponent<Image>().color == Color.red)
+            {
+                btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+            }*/
+            if (!movement2)
+            {
+                movement1 = false;
+                movement2 = true;
+                movement3 = false;
+                btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+                btnMovement2.gameObject.GetComponent<Image>().color = Color.red;
+                btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                movement2 = false;
+                btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+            }
+        }
+        else if (mov3)
+        {
+            /*if (btnMovement3.gameObject.GetComponent<Image>().color == Color.red)
+            {
+                btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
+            }*/
+            if (!movement3)
+            {
+                movement1 = false;
+                movement2 = false;
+                movement3 = true;
+                btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+                btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+                btnMovement3.gameObject.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                movement3 = false;
+                btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
+            }
+        }
+    }
+    /*public void ExecuteMovement1() {
         if(btnMovement1.gameObject.GetComponent<Image>().color == Color.red)
         {
             btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
@@ -137,7 +207,7 @@ public class SelectionController : MonoBehaviour
         else
             movement3 = false;
             //btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
-    }
+    }*/
     public bool GetChange() { return change; }
     public int getCont() { return cont; }
     public void SetChange(bool _change) { change = _change; }
@@ -148,6 +218,27 @@ public class SelectionController : MonoBehaviour
         {
             SetChange(true);
             SetCont(cont - 1);
+            movement1 = false;
+            movement2 = false;
+            movement3 = false;
+            btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+            btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+            btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    public void MoveMovementsRight()
+    {
+        if (cont < Globals.movements.Count - 3)
+        {
+            SetChange(true);
+            SetCont(cont + 1);
+            movement1 = false;
+            movement2 = false;
+            movement3 = false;
+            btnMovement1.gameObject.GetComponent<Image>().color = Color.white;
+            btnMovement2.gameObject.GetComponent<Image>().color = Color.white;
+            btnMovement3.gameObject.GetComponent<Image>().color = Color.white;
         }
     }
 
@@ -282,14 +373,6 @@ public class SelectionController : MonoBehaviour
             muevete = false;*/
     }
 
-    public void MoveMovementsRight()
-    {
-        if (cont < Globals.movements.Count - 3)
-        {
-            SetChange(true);
-            SetCont(cont + 1);
-        }
-    }
     //usar en verano
     private void OnGUI()
     {
