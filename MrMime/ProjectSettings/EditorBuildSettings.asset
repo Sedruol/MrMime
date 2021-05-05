@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RobotArm.unity
     guid: 23c9feba667073f4abe634dd2a588827
+  - enabled: 1
+    path: Assets/Scenes/RobotSimulation.unity
+    guid: d1cce2053102da74ca94f9e53e299877
+  - enabled: 1
+    path: Assets/Scenes/Select Robot Movement.unity
+    guid: 48a4368186e21a3438d99fbdeee09751
   m_configObjects: {}

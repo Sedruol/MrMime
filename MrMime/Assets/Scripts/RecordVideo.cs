@@ -129,14 +129,14 @@ public class RecordVideo : MonoBehaviour
     {
         videoPlayer.gameObject.SetActive(false);
         panelVideo.SetActive(false);
-        PanelFondo.gameObject.SetActive(true);
-        txtInfo.text = "Se está enviando el video al servidor";
+        //PanelFondo.gameObject.SetActive(true);
+        //txtInfo.text = "Se está enviando el video al servidor";
         string[] fileNames = path.Split('/');
         string nameFile = fileNames[fileNames.Length - 1];
         Debug.Log(nameFile);
         s3Conection.Post(path, nameFile);
-        txtInfo.text = "Se envió el video al servidor";
-        btnOk.gameObject.SetActive(true);
+        //txtInfo.text = "Se envió el video al servidor";
+        //btnOk.gameObject.SetActive(true);
     }
     public void StopVideo()
     {

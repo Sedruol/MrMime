@@ -36,6 +36,10 @@ public class MainMenu : MonoBehaviour
         {
             SceneManager.LoadScene("RobotArm");
         }
+        if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.8f, Screen.width * 0.1f, Screen.height * 0.05f), "Simulate movement"))
+        {
+            SceneManager.LoadScene("Select Robot Movement");
+        }
     }
     // Update is called once per frame
     void Update()
