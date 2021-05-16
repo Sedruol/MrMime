@@ -14,6 +14,9 @@ public class RecordVideo : MonoBehaviour
 {
     [SerializeField] private Button btnGoHome;
     [SerializeField] private Button btnExit;
+    [SerializeField] private GameObject pnlExit;
+    [SerializeField] private Button btnLeave;
+    [SerializeField] private Button btnStay;
     [SerializeField] private GameObject VideoCaptureCtlr;
     [SerializeField] private RawImage camaraVideo;
     [SerializeField] private GameObject panelVideo;
@@ -35,7 +38,9 @@ public class RecordVideo : MonoBehaviour
     void Start()
     {
         btnGoHome.onClick.AddListener(() => GoHome());
-        btnExit.onClick.AddListener(() => Exit());
+        btnExit.onClick.AddListener(() => PanelExit());
+        btnLeave.onClick.AddListener(() => Exit());
+        btnStay.onClick.AddListener(() => PanelExit());
         btnOk.gameObject.SetActive(false);
         PanelFondo.SetActive(false);
         txtInfo.text = "";
@@ -60,6 +65,17 @@ public class RecordVideo : MonoBehaviour
         StopVideo();
         SceneManager.LoadScene("Main Menu");
     }
+
+    private void PanelExit()
+    {
+        if (!VideoCaptureCtlr.activeSelf)
+        {
+            Globals.vExit = !Globals.vExit;
+            PauseVideo();
+            pnlExit.SetActive(Globals.vExit);
+        }
+    }
+
     private void Exit()
     {
         StopVideo();
@@ -143,36 +159,49 @@ public class RecordVideo : MonoBehaviour
         if (backCam != null)
             backCam.Stop();
     }
+    public void PauseVideo()
+    {
+        if (video.url != null)
+        {
+            if (Globals.vExit)
+                video.Pause();
+            else if (!Globals.vExit)
+                video.Play();
+        }
+    }
 
     private void OnGUI()
     {
-        if (!camara)
+        if (!Globals.vExit)
         {
-            StopVideo();
-            if (!panelVideo.activeSelf)
+            if (!camara)
             {
-                if (GUI.Button(new Rect(25, Screen.height - 60, 150, 50), "Record Video"))
+                StopVideo();
+                if (!panelVideo.activeSelf)
                 {
-                    OpenCamera();
+                    if (GUI.Button(new Rect(25, Screen.height - 60, 150, 50), "Record Video"))
+                    {
+                        OpenCamera();
+                    }
+                    if (GUI.Button(new Rect(Screen.width - 175, Screen.height - 60, 150, 50), "Upload Video"))
+                    {
+                        OpenExplorer();
+                    }
                 }
-                if (GUI.Button(new Rect(Screen.width - 175, Screen.height - 60, 150, 50), "Upload Video"))
+                else
                 {
-                    OpenExplorer();
-                }
-            }
-            else
-            {
-                if(GUI.Button(new Rect(Screen.width - 525, Screen.height - 60, 150, 50), "Back"))
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
-                if (GUI.Button(new Rect(Screen.width - 350, Screen.height - 60, 150, 50), "Add Video"))
-                {
-                    AddVideo();
-                }
-                if (GUI.Button(new Rect(Screen.width - 175, Screen.height - 60, 150, 50), "Upload Video"))
-                {
-                    OpenExplorer();
+                    if (GUI.Button(new Rect(Screen.width - 525, Screen.height - 60, 150, 50), "Back"))
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
+                    if (GUI.Button(new Rect(Screen.width - 350, Screen.height - 60, 150, 50), "Add Video"))
+                    {
+                        AddVideo();
+                    }
+                    if (GUI.Button(new Rect(Screen.width - 175, Screen.height - 60, 150, 50), "Upload Video"))
+                    {
+                        OpenExplorer();
+                    }
                 }
             }
         }
