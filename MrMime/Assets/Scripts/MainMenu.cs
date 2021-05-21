@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button btnExit;
+    [SerializeField] private Button btnInfo;
+    [SerializeField] private Button btnBackInfo;
+    [SerializeField] private GameObject pnlInfo;
     [SerializeField] private GameObject pnlExit;
     [SerializeField] private Button btnLeave;
     [SerializeField] private Button btnStay;
@@ -17,6 +20,10 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         vExit = false;
+        pnlExit.SetActive(false);
+        pnlInfo.SetActive(false);
+        btnInfo.onClick.AddListener(() => InfoMenu());
+        btnBackInfo.onClick.AddListener(() => InfoMenu());
         btnExit.onClick.AddListener(() => PanelExit());
         btnLeave.onClick.AddListener(() => Exit());
         btnStay.onClick.AddListener(() => PanelExit());
@@ -32,6 +39,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Select Movement");
     }*/
+
+    private void InfoMenu()
+    {
+        vExit = !vExit;
+        pnlInfo.SetActive(vExit);
+    }
+
     private void PanelExit()
     {
         vExit = !vExit;
