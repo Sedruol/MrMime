@@ -21,6 +21,7 @@ namespace RosSharp.Control
         public string selectedJoint;
         public Vector3[] points;
         public bool type = false;
+        public bool f = false;
         public int it = 0;
         public int verifyCount = 0;
         public bool canChange = true;
@@ -114,7 +115,7 @@ namespace RosSharp.Control
 
         private void SimulatePoints()
         {
-            print(it + "vs" + points.Length);
+           
             timeDelay++;
             if (canChange)
             {
@@ -134,6 +135,10 @@ namespace RosSharp.Control
                 blockSA = false;
                 blockSE = false;
                 blockEH = false;
+            }
+            if (it + 1 > points.Length - 1)
+            {
+                f = true;
             }
         }
         private void SetDirections()

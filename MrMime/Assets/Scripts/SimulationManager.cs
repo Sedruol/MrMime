@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SimulationManager : MonoBehaviour
 {
     SimulationManager instance;
     public string content;
+    public string title;
+    public Text titleText;
+    public GameObject finish;
     public Controller rightArm;
     public Controller leftArm;
     // Start is called before the first frame update
@@ -15,7 +19,8 @@ public class SimulationManager : MonoBehaviour
     {
         instance = this;
         content = PlayerPrefs.GetString("sim");
-        
+        title = PlayerPrefs.GetString("title");
+        titleText.text = title;
         string[] arrLeftRight = content.Split(char.Parse("a"));
         //right arm
         print(arrLeftRight[0]);
@@ -54,5 +59,12 @@ public class SimulationManager : MonoBehaviour
     {
         SceneManager.LoadScene("Select Robot Movement");
     }
-   
+    private void Update()
+    {
+        if (rightArm.f)
+        {
+            finish.SetActive(true);
+        }
+    }
+
 }

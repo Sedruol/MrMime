@@ -202,6 +202,8 @@ public class S3Conection : MonoBehaviour
         if (uwr.isNetworkError)
         {
             Debug.Log("Error While Sending: " + uwr.error);
+            loadingScreen.SetActive(false);
+            botones.SetActive(true);
         }
         else
         {

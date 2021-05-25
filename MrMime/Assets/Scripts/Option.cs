@@ -11,6 +11,7 @@ public class Option : MonoBehaviour
     {
         
         PlayerPrefs.SetString("sim", content);
+        PlayerPrefs.SetString("title", transform.GetChild(0).GetComponent<Text>().text);
         SceneManager.LoadScene("RobotSimulation");
     }
 }
