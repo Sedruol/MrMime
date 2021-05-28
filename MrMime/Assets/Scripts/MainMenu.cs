@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
     private void Exit()
     {
         Debug.Log("la aplicación se cierra");
+        PanelExit();
         Application.Quit();
     }
     private void OnGUI()
@@ -64,15 +65,15 @@ public class MainMenu : MonoBehaviour
             {
                 SceneManager.LoadScene("Add Movement 1");
             }
-            if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.6f, Screen.width * 0.1f, Screen.height * 0.05f), "Select Movement"))
+            /*if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.6f, Screen.width * 0.1f, Screen.height * 0.05f), "Select Movement"))
             {
                 SceneManager.LoadScene("Select Movement");
-            }
-            if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.7f, Screen.width * 0.1f, Screen.height * 0.05f), "Try simulator"))
+            }*/
+            if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.6f, Screen.width * 0.1f, Screen.height * 0.05f), "Try simulator"))
             {
                 SceneManager.LoadScene("RobotArm");
             }
-            if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.8f, Screen.width * 0.1f, Screen.height * 0.05f), "Simulate movement"))
+            if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.7f, Screen.width * 0.1f, Screen.height * 0.05f), "Simulate movement"))
             {
                 SceneManager.LoadScene("Select Robot Movement");
             }
