@@ -32,6 +32,7 @@ public class Menu : MonoBehaviour
     private void Exit()
     {
         Debug.Log("la aplicación se cierra");
+        PanelExit();
         Application.Quit();
     }
 

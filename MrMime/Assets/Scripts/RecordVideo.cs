@@ -78,7 +78,8 @@ public class RecordVideo : MonoBehaviour
 
     private void Exit()
     {
-        StopVideo();
+        PanelExit();
+        Debug.Log("la aplicación se cierra");
         Application.Quit();
     }
 
