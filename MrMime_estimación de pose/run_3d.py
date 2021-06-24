@@ -111,7 +111,16 @@ if __name__ == '__main__':
     visibilities = np.array(visibilities)
     transformed_pose2d, weights = poseLifting.transform_joints(pose_2d_mpiis, visibilities)
     pose_3d = poseLifting.compute_3d(transformed_pose2d, weights)
-
+    #imprimir puntos
+    pointsCount = len(pose_3d[0][0])
+    print("===================================================================================================================")
+    linea = "mano = [" + str(pose_3d[0][0][pointsCount-4]) + "," + str(pose_3d[0][1][pointsCount-4]) + "," + str(pose_3d[0][2][pointsCount-4])+ "]"
+    print(linea)
+    linea = "codo = [" + str(pose_3d[0][0][pointsCount-5]) + "," + str(pose_3d[0][1][pointsCount-5]) + "," + str(pose_3d[0][2][pointsCount-5])+ "]"
+    print(linea)
+    linea = "hombro = [" + str(pose_3d[0][0][pointsCount-6]) + "," + str(pose_3d[0][1][pointsCount-6]) + "," + str(pose_3d[0][2][pointsCount-6])+ "]"
+    print(linea)
+    print("===================================================================================================================")
     for i, single_3d in enumerate(pose_3d):
         plot_pose(single_3d)
     plt.show()

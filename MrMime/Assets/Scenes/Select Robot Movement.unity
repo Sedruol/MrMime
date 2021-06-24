@@ -1395,7 +1395,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cargando datos...
+  m_Text: Loading data...
 --- !u!222 &1219582265
 CanvasRenderer:
   m_ObjectHideFlags: 0

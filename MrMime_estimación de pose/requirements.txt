@@ -1,3 +1,10 @@
+flask
+boto3
+pandas
+opencv-python
+numpy
+statistics
+keras 
 argparse
 dill
 fire

@@ -25,12 +25,12 @@ from __future__ import print_function
 import copy
 import functools
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from tf_pose.mobilenet import conv_blocks as ops
 from tf_pose.mobilenet import mobilenet as lib
 
-slim = tf.contrib.slim
+import tf_slim as slim
 op = lib.op
 
 expand_input = ops.expand_input_by_factor
