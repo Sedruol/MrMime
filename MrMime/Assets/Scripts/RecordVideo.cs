@@ -92,6 +92,8 @@ public class RecordVideo : MonoBehaviour
         camaraVideo.texture = backCam;
         backCam.Play();
         camaraVideo.gameObject.SetActive(true);
+        btnGoHome.gameObject.SetActive(false);
+        btnExit.gameObject.SetActive(false);
     }
 
     public void ShowExplorer()

@@ -13,6 +13,8 @@ namespace RockVR.Video.Demo
         [SerializeField] private GameObject PanelFondo;//koala añadió
         [SerializeField] private Text txtInfo;//koala añadió
         [SerializeField] private Button btnOk;//koala añadió
+        [SerializeField] private Button btnGoHome;//koala añadió
+        [SerializeField] private Button btnExit;//koala añadió
         private string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);//koala añadió
         private void Awake()
         {
@@ -99,6 +101,8 @@ namespace RockVR.Video.Demo
                     }
                     if (GUI.Button(new Rect(/*465*/Screen.width - 175, Screen.height - 60, 150, 50), "Add Video"))
                     {
+                        btnGoHome.gameObject.SetActive(true);
+                        btnExit.gameObject.SetActive(true);
                         PanelFondo.gameObject.SetActive(true);
                         txtInfo.text = "Se está enviando el video al servidor";
                         myDocumentsPath += VideoPlayer.instance.VideoName;

@@ -494,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &234914328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2756,6 +2756,8 @@ MonoBehaviour:
   PanelFondo: {fileID: 1961689257}
   txtInfo: {fileID: 1386371155}
   btnOk: {fileID: 104134126}
+  btnGoHome: {fileID: 418341497}
+  btnExit: {fileID: 1352058900}
 --- !u!114 &1894525859
 MonoBehaviour:
   m_ObjectHideFlags: 0
