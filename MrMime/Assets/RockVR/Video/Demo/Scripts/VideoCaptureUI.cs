@@ -30,6 +30,8 @@ namespace RockVR.Video.Demo
             {
                 if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Start Capture"))
                 {
+                    btnGoHome.gameObject.SetActive(false);
+                    btnExit.gameObject.SetActive(false);
                     VideoCaptureCtrl.instance.StartCapture();
                 }
             }
