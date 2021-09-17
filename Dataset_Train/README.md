@@ -3,7 +3,9 @@ According to the theory of the kinesphere, the directions in which the human bod
 
 The combinations that a person cannot perform without forcing their body (e.g., see the next image) to locate the most common directions are manually removed and they are left with a list with the following format.
 
+![Texto alternativo](https://github.com/Sedruol/Images_TP/blob/main/Directions.png)
 
+![Texto alternativo](https://github.com/Sedruol/Images_TP/blob/main/ID_Directions.PNG)
 
 We propose a arm movement dataset based on the theory of the kinesphere using Unity3D and different person models extracted from Mixamo. This dataset is on an external link, due to its very heavy weight.
 
